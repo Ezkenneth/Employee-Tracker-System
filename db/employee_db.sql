@@ -8,9 +8,9 @@ CREATE TABLE department (
     name VARCHAR(30),
     PRIMARY KEY (id)
 );
-CREATE TABLE role (
+CREATE TABLE roles (
     id INT(11) AUTO_INCREMENT NOT NULL,
-    role VARCHAR(30),
+    roleName VARCHAR(30),
     salary DECIMAL(12,4),
     departmentId INT NOT NULL,
     PRIMARY KEY (id),
@@ -21,12 +21,12 @@ CREATE TABLE employee (
     firstName VARCHAR(30),
     lastName VARCHAR(30),
     roleId INT NOT NULL,
-    managerId INT NOT NULL,
+    managerId INT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY(roleId) REFERENCES role(id),
-    FOREIGN KEY(managerId) REFERENCES role(id)
+    FOREIGN KEY(roleId) REFERENCES roles(id),
+    FOREIGN KEY(managerId) REFERENCES roles(id)
 );
 
 SELECT * FROM department;
-SELECT * FROM role;
+SELECT * FROM roles;
 SELECT * FROM employee;
